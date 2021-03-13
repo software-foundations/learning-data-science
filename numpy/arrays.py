@@ -114,3 +114,74 @@ print(max_value)
 print(min_value)
 print(max_value)
 print(min_value)
+
+"""
+Indexing and Slicing arrays
+"""
+
+
+# Select element by index
+arr = np.arange(0, 30, 3)
+number = arr[4]
+print(number)
+
+# Slicing: selecet multiple elements
+# like a list
+arr = np.arange(0, 30, 3)
+
+numbers = arr[0:4] # first 4 - 0 == 4 index elements
+print(numbers)
+
+numbers = arr[:4] # first 4 index elements
+print(numbers)
+
+numbers = arr[4:] # elements grather or equal than 4 index
+print(numbers)
+
+# attributing values to a slice of an array
+arr_2 = arr.copy()
+arr_2[4:] = 100
+print(arr_2)arr_2 = arr.copy()
+arr_2[4:] = 100
+print(arr_2)
+
+# Slicing n-dim arrays
+arr = np.arange(50).reshape(5, 10)
+print(arr)
+print(arr.shape)
+
+def compare_arrays(arr, arr_2, arr_3):
+	print(arr_2, id(arr_2))
+	print(arr_3, id(arr_3))
+
+	arr_boolean = arr_2 == arr_3 # compara values
+	boolean: bool = arr_boolean.all() # true if all is true
+	print(arr_boolean)
+	print(boolean)
+
+	arr_2[:] = 100 # setting 100 to all array elements
+	print(arr_2)
+	print(arr)
+
+
+# way 01: arr.[lines][columns]
+arr_2 = arr.copy()[:3][:] # copy function to avoid point to arr when alter arr_2 or arr_3
+arr_3 = arr.copy()[:3]
+
+compare_arrays(arr, arr_2, arr_3)
+
+# way 02:
+# comma notation
+arr_2 = arr.copy()[1:4, ]
+arr_3 = arr.copy()[1:4, :]
+
+compare_arrays(arr, arr_2, arr_3)
+
+# Select items by Logic operations in arrays
+arr = np.arange(100).reshape(10, 10)
+bol = arr > 50
+arr_2 = arr.copy()[bol]
+
+print(arr)
+print(bol)
+print(arr_2)
