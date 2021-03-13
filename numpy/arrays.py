@@ -185,3 +185,65 @@ arr_2 = arr.copy()[bol]
 print(arr)
 print(bol)
 print(arr_2)
+
+"""
+Numpy Array Operations
+"""
+
+arr = np.arange(0, 16)
+
+# sum
+arr_2 = arr + arr
+print(arr_2)
+
+# sub
+arr_2 = arr - arr
+print(arr_2)
+
+# multiplication
+arr_2 = arr * arr
+print(arr_2)
+
+# division
+arr_2 = arr / arr
+"""
+Error message equivalent to ZeroDivisionError in array operation (which not raise an error, and returns nan instead in 0/0)
+<ipython-input-105-1a13d9f299b5>:1: RuntimeWarning: invalid value encountered in true_divide        
+  arr_2 = arr / arr                               
+[nan  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.] 
+"""
+
+# Index by index division
+arr_3 = 1 / arr
+"""
+Error message equivalent to ZeroDivisionError in array operation (which not raise an error, and returns inf instead in 1/0)
+"""
+print(arr_2)
+
+# Exponentiation: index by index
+# Are the same with +, - * and / operations
+arr_2 = arr ** 2
+print(arr_2)
+
+# square root
+arr_2 = np.sqrt(arr)
+
+# exponentiation of all array
+arr_2 = np.exp(arr)
+
+# mean
+mean: np.float64 = np.mean(arr)
+
+# standard deviation
+std: np.float64 = np.std(arr)
+
+# sin
+arr_2: np.float64 = np.sin(arr)
+
+# the major value of the array
+max_value: np.int64 = np.max(arr)
+max_value: np.int64 = arr.max()
+
+# the mininum value of the array
+min_value: np.int64 = np.min(arr)
+min_value: np.int64 = arr.min()
