@@ -16,3 +16,14 @@
 - Are essentially n-dimensions arrays (where n is greater or equal 2)
 - Can have only one line or column
 
+# Pandas
+
+- Like Excel for python
+
+## Series
+## DataFrames
+## Absent Data
+## GroypBy
+## Concatenate, join and mix
+## Operations
+## Data input/output
