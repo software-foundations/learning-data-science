@@ -32,9 +32,17 @@
 			"shell_cmd": "\"/home/bruno/Documents/dev/learning-data-science/venv-learning-data-science/bin/python\" -u \"$file\"",
 			"target": "terminus_open",
 			"timeit": true,
+<<<<<<< HEAD
 			"title": "learning datascience terminal",
 			"title": "interactive python",
 
+=======
+<<<<<<< HEAD
+			"title": "learning datascience terminal",
+=======
+			"title": "interactive python",
+>>>>>>> (learning-data-science.sublime-project, at /) -> build systems (default, terminal and ipython)
+>>>>>>> 04718a7c75e8f6550d3469c6a86f84696627984e
 			"variants":
 			[
 				{
