@@ -19,10 +19,9 @@ print(arr)
 # Creating an 1-d array with zeros
 arr = np.zeros(3)
 print(arr)
-print(max_value)
-print(min_value)
+
 # Creating an 2-d array with zeros
-my_tuple = ((5,5))
+my_tuple = ((5, 5))
 arr = np.zeros(my_tuple)
 print(arr)
 
@@ -31,7 +30,7 @@ arr = np.ones(8)
 print(arr)
 
 # Creating an 2-d array with ones
-arr = np.ones((3,5))
+arr = np.ones((3, 5))
 print(arr)
 
 # Creating identity matrix
@@ -77,15 +76,14 @@ print(arr)
 
 # Creating random numbers
 # integers
-print(max_value)
-print(min_value)
+
 # 10 random integers between 0 and 99
 arr = np.random.randint(0, 100, 10)
 
 # Round the numbers of the arrays
 arr = np.random.rand(5) * 100
 arr_2 = np.round(arr, decimals=0)
-prtin(arr_2)
+print(arr_2)
 
 # Reshape
 arr = np.random.rand(25)
@@ -141,7 +139,8 @@ print(numbers)
 # attributing values to a slice of an array
 arr_2 = arr.copy()
 arr_2[4:] = 100
-print(arr_2)arr_2 = arr.copy()
+print(arr_2)
+arr_2 = arr.copy()
 arr_2[4:] = 100
 print(arr_2)
 
