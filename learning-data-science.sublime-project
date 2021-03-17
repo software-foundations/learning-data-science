@@ -1,15 +1,12 @@
 {
 	"build_systems":
 	[
-		// default
 		{
 			"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
 			"name": "learning datascience",
 			"selector": "source.python",
 			"shell_cmd": "\"/home/bruno/Documents/dev/learning-data-science/venv-learning-data-science/bin/python\" -u \"$file\""
 		},
-
-		// terminal
 		{
 			"auto_close": false,
 			"env":
@@ -42,8 +39,6 @@
 			],
 			"working_dir": "$file_path"
 		},
-
-		// ipython
 		{
 			"auto_close": false,
 			"env":
@@ -69,7 +64,12 @@
 			"title": "ipython",
 			"working_dir": "$file_path"
 		},
-
+		{
+			"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+			"name": "Anaconda Python Builder",
+			"selector": "source.python",
+			"shell_cmd": "\"/home/bruno/Documents/dev/learning-data-science/venv-learning-data-science/bin/python\" -u \"$file\""
+		}
 	],
 	"folders":
 	[
@@ -77,6 +77,5 @@
 			"path": "."
 		}
 	],
-
-	"python_interpreter": "/home/bruno/Documents/dev/learning-data-science/venv-learning-data-science/bin/python",
+	"python_interpreter": "/home/bruno/Documents/dev/learning-data-science/venv-learning-data-science/bin/python"
 }
