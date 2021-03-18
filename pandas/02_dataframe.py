@@ -140,3 +140,35 @@ df.xs('G1')
 df.xs(key=1, axis=0, level='Number')
 
 df.xs(1, level='Number')
+
+
+###############
+# Absent Data #
+###############
+
+d = {'A': [1, 2, np.nan], 'B': [5, np.nan, np.nan], 'C': [1, 2, 3]}
+
+df = pd.DataFrame(d)
+
+# Remove rows with absent data
+
+df.dropna()
+
+df.dropna(axis=0)
+
+# Remove rows with at least 2 nan
+
+df.dropna(thresh=2)
+
+# replace nan values
+
+df.fillna(value='Fill na')
+
+# replace nan values of a colum by its mean
+
+df['A'].fillna(value=df['A'].mean())
+
+# replace nan values with foward fill method
+# util in time series
+
+df.fillna(method='ffill')
