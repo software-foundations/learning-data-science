@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-
+from typing import Tuple, List
 
 np.random.seed(101)
 
@@ -89,3 +89,54 @@ df['Country'] = col
 df.set_index('Country')
 
 df.set_index('Country', inplace=True)
+
+
+#######################
+# Multi level indexes #
+#######################
+
+# Levels of index
+
+outside = ['G1', 'G1', 'G1', 'G2', 'G2', 'G2']
+
+inside = [1, 2, 3, 1, 2, 3]
+
+list_tuples: List[Tuple] = list(zip(outside, inside))
+
+hier_index = pd.MultiIndex.from_tuples(list_tuples)
+
+# Creating dataframe
+
+data = np.random.randn(6, 2)
+
+df = pd.DataFrame(data=data, index=hier_index, columns=['A', 'B'])
+
+# Acessing index levels
+
+df.loc['G1']
+
+df.loc['G2']
+
+# Naming index levels
+
+df.index.names
+
+df.index.names = ['Group', 'Number']
+
+df.index.names
+
+df
+
+# -> Cross sections
+
+# outside level
+
+df.xs(key='G1', axis=0, level='Group')
+
+df.xs('G1')
+
+# inside level
+
+df.xs(key=1, axis=0, level='Number')
+
+df.xs(1, level='Number')
