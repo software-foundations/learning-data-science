@@ -172,3 +172,42 @@ df['A'].fillna(value=df['A'].mean())
 # util in time series
 
 df.fillna(method='ffill')
+
+
+###########
+# GroupBy #
+###########
+
+# creating df
+
+data = {'Enterprise': ['GOOG', 'GOOG', 'MSFT', 'MSFT', 'FB', 'FB'],
+        'Name': ['Sam', 'Charlie', 'Amy', 'Vanessa', 'Carl', 'Sarah'],
+        'Sale': [200, 120, 340, 124, 243, 350]}
+
+df = pd.DataFrame(data)
+
+# creating group
+
+group = df.groupby('Enterprise')
+
+# operate in the group
+
+group.sum() # ignore text content in the column
+
+group.count() # doesn't ignore text content
+
+group.mean()
+
+group.describe()
+
+group.describe()['Sale']['mean']
+
+# creating another group
+
+group_name = df.groupby('Name')
+
+group_name.sum()
+
+# filter by line
+
+group_name.sum().loc['Amy']
