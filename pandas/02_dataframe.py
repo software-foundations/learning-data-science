@@ -36,9 +36,9 @@ df = df.drop('new', axis=1)
 
 # -> Types
 
-type(df['W']) # pandas.core.series.Series
+type(df['W'])  # pandas.core.series.Series
 
-type(df) # pandas.core.frame.DataFrame
+type(df)  # pandas.core.frame.DataFrame
 
 # -> filter by df.loc[line, column]
 
@@ -192,9 +192,9 @@ group = df.groupby('Enterprise')
 
 # operate in the group
 
-group.sum() # ignore text content in the column
+group.sum()  # ignore text content in the column
 
-group.count() # doesn't ignore text content
+group.count()  # doesn't ignore text content
 
 group.mean()
 
@@ -311,3 +311,130 @@ left.join(right)
 # join all rows considering all indexes
 
 left.join(right, how='outer')
+
+
+##############
+# Operations #
+##############
+
+
+df = pd.DataFrame({
+    'col1': [1, 2, 3, 4],
+    'col2': [444, 555, 666, 444],
+    'col3': ['abc', 'def', 'ghi', 'xyz']})
+
+# unique data selecion
+
+df['col2'].unique()
+
+np.unique(df['col2'])
+
+# len of unique
+
+len(df['col2'].unique())
+
+df['col2'].nunique()
+
+# value_counts = unique + nunique
+
+df['col2'].value_counts()
+
+# selection condition
+
+bol1 = df['col1'] > 2
+
+bol2 = df['col2'] == 444
+
+rule1 = bol1 & bol2
+
+rule2 = bol1 | bol2
+
+df[rule1]
+
+df[rule2]
+
+# sum
+
+df.sum()
+
+df['col1'].sum()
+
+# apply
+# our functions
+
+
+def multiply_by_2(x):
+    return x * 2
+
+
+df.apply(multiply_by_2)
+
+df['col1'].apply(multiply_by_2)
+
+df['col1'].apply(lambda x: x * 2)
+
+df['col1'].apply(lambda x: x * x)
+
+df['col3'].apply(len)
+
+
+# del columns
+
+del df['col2']
+
+
+# columns
+
+df.columns
+
+
+# indexes
+
+df.index
+
+
+# sort
+
+df = pd.DataFrame({
+    'col1': [1, 2, 3, 4],
+    'col2': [444, 555, 666, 444],
+    'col3': ['abc', 'def', 'ghi', 'xyz']})
+
+df.sort_values(by='col2', axis=0, ascending=True, inplace=False, kind="quicksort", na_position="last", ignore_index=False)
+
+df.sort_values(by='col2')
+
+
+# null values
+
+df.isnull()
+
+df.dropna(axis=0, how="any", thresh=None, subset=None, inplace=False)
+
+df.dropna()
+
+df = pd.DataFrame({
+    'col1': [1, 2, 3, np.nan],
+    'col2': [np.nan, 555, 666, 444],
+    'col3': ['abc', 'def', 'ghi', 'xyz']})
+
+df['col1'].fillna(value=df['col1'].mean(), method=None, axis=None, inplace=False, limit=None, downcast=None)
+
+df['col1'].fillna(df['col1'].mean())
+
+df['col1'].fillna(value=df['col1'].mean())
+
+
+# pivot table
+# seams like dynamic tables in excel
+
+data = {
+    'A': ['foo', 'foo', 'foo', 'bar', 'bar', 'bar'],
+    'B': ['one', 'one', 'two', 'two', 'one', 'one'],
+    'C': ['x', 'y', 'x', 'y', 'x', 'y'],
+    'D': [1, 3, 2, 5, 4, 1]
+}
+
+df = pd.DataFrame(data)
+
+df.pivot_table(values='D', index=['A', 'B'], columns=['C'])
