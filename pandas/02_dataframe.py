@@ -211,3 +211,103 @@ group_name.sum()
 # filter by line
 
 group_name.sum().loc['Amy']
+
+
+#########################################
+# Concatenate, Merge, and Join Daframes #
+#########################################
+
+df1 = pd.DataFrame(data={
+    'A': ['A0', 'A1', 'A2', 'A3'],
+    'B': ['B0', 'B1', 'B2', 'B3'],
+    'C': ['C0', 'C1', 'C2', 'C3'],
+    'D': ['D0', 'D1', 'D2', 'D3']},
+    index=[0, 1, 2, 3])
+
+df2 = pd.DataFrame(data={
+    'A': ['A4', 'A5', 'A6', 'A7'],
+    'B': ['B4', 'B5', 'B6', 'B7'],
+    'C': ['C4', 'C5', 'C6', 'C7'],
+    'D': ['D4', 'D5', 'D6', 'D7']},
+    index=[4, 5, 6, 7])
+
+df3 = pd.DataFrame(data={
+    'A': ['A8', 'A9', 'A10', 'A11'],
+    'B': ['B8', 'B9', 'B10', 'B11'],
+    'C': ['C8', 'C9', 'C10', 'C11'],
+    'D': ['D8', 'D9', 'D10', 'D11']},
+    index=[8, 9, 10, 11])
+
+
+# Concatenate
+
+list_df = [df1, df2, df3]
+
+pd.concat(list_df)
+
+pd.concat(list_df, axis=0)
+
+pd.concat(list_df, axis=1)
+
+# Merge
+
+left = pd.DataFrame(data={
+    'key': ['k0', 'k1', 'k2', 'k3'],
+    'A': ['A0', 'A1', 'A2', 'A3'],
+    'B': ['B0', 'B1', 'B2', 'B3']})
+
+right = pd.DataFrame(data={
+    'key': ['k0', 'k1', 'k2', 'k3'],
+    'C': ['C0', 'C1', 'C2', 'C3'],
+    'D': ['D0', 'D1', 'D2', 'D3']})
+
+pd.merge(left=left, right=right)
+
+pd.merge(left, right, how='inner', on='key')
+
+# Merge 02
+
+left = pd.DataFrame(data={
+    'key1': ['k0', 'k0', 'k1', 'k2'],
+    'key2': ['k0', 'k1', 'k0', 'k1'],
+    'A': ['A0', 'A1', 'A2', 'A3'],
+    'B': ['B0', 'B1', 'B2', 'B3']})
+
+right = pd.DataFrame(data={
+    'key1': ['k0', 'k1', 'k1', 'k2'],
+    'key2': ['k0', 'k0', 'k0', 'k0'],
+    'C': ['C0', 'C1', 'C2', 'C3'],
+    'D': ['D0', 'D1', 'D2', 'D3']})
+
+list_keys = ['key1', 'key2']
+
+pd.merge(left, right, on=list_keys)
+
+pd.merge(left, right, how='outer', on=list_keys)
+
+pd.merge(left, right, how='right', on=list_keys)
+
+pd.merge(left, right, how='left', on=list_keys)
+
+
+# Join
+# used when indexes are keys
+
+left = pd.DataFrame(data={
+    'A': ['A0', 'A1', 'A2'],
+    'B': ['B0', 'B1', 'B2']},
+    index=['k0', 'k1', 'k2'])
+
+right = pd.DataFrame(data={
+    'C': ['C0', 'C1', 'C2'],
+    'D': ['D0', 'D1', 'D2']},
+    index=['k0', 'k2', 'k3'])
+
+# only join right rows which have indexs present in left
+
+left.join(right)
+
+# join all rows considering keys present in both left and right
+# join all rows considering all indexes
+
+left.join(right, how='outer')
