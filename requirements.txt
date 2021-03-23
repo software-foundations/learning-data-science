@@ -1,6 +1,7 @@
 numpy==1.20.1
 pandas==1.2.3
 ipython==7.21.0
+matplotlib==3.3.4
 
 # xls and xlsx
 xlrd==1.2
