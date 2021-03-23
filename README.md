@@ -27,3 +27,11 @@
 ## Concatenate, join and mix
 ## Operations
 ## Data input/output
+
+# Matplotlib
+
+- It is the library of data visualization most popular in python
+
+- This library gives total control of the figure aspects
+
+- This library was developed to be simular MatLab in plot methods
