@@ -438,3 +438,64 @@ data = {
 df = pd.DataFrame(data)
 
 df.pivot_table(values='D', index=['A', 'B'], columns=['C'])
+
+
+#####################
+# data input/output #
+# csv
+# excel
+# html
+#####################
+
+
+# to run in ipython
+
+# import os
+
+# cwd = os.getcwd()
+
+# folder = 'pandas'
+
+# path = os.path.join(cwd, folder)
+
+# os.chdir(path)
+
+
+# csv
+
+df = pd.read_csv('input.csv', sep=',')
+
+df = pd.read_csv('input.csv', sep=',', decimal='.')
+
+df.to_csv("output.csv", sep=';', decimal=',')
+
+
+# xslx (needs xlrd package)
+
+# df = pd.read_excel('input.xlsx', sheet_name='input')                                                                        
+# <ipython-input-4-7065ee4a7618>:1: FutureWarning: Your version of xlrd is 1.2.0. In xlrd >= 2.0, only the xls format is supported. As a result, the openpyxl engine will be used if it is installed and the engine argument is not specified. Install openpyxl instead.
+#   df = pd.read_excel('input.xlsx', sheet_name='input')
+
+
+# xlsx
+
+df = pd.read_excel(open('input.xls', 'rb'), sheet_name='input')
+
+df = pd.read_excel('input.xls', sheet_name='input')
+
+df = pd.read_excel('input.xlsx', sheet_name='input')
+
+df.to_excel("output.xlsx", sheet_name='output')
+
+
+# html
+
+import lxml
+
+import bs4
+
+url: str = "http://www.fdic.gov/bank/individual/failed/banklist.html"
+
+# ValueError: no tables found error
+
+df = pd.read_html(url)
