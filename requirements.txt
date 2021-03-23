@@ -1,3 +1,11 @@
 numpy==1.20.1
 pandas==1.2.3
 ipython==7.21.0
+
+# xls and xlsx
+xlrd==1.2
+openpyxl==3.0.7
+
+# to pd.read_html dependency
+lxml==4.6.3
+bs4==0.0.1
