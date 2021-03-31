@@ -10,6 +10,8 @@ from matplotlib.font_manager import FontProperties
 import numpy as np
 import pandas as pd
 
+from typing import List
+
 ######################
 # Matplotlib - part 01
 ######################
@@ -106,3 +108,123 @@ axes1.set_title('Title')
 axes2.plot(x, y, color='r')
 
 plt.show()
+
+
+######################
+# Matplotlib - part 02
+######################
+
+# -> fig and axes
+
+x = np.linspace(0, 5, 11)
+
+fig, ax = plt.subplots()
+
+ax.plot(x, x**3, color='r')
+
+ax.plot(x, x**4, color='b')
+
+fig.show()
+
+
+# -> fig and axes
+
+x = np.linspace(0, 5, 11)
+
+fig, ax = plt.subplots()
+
+ax.plot(x, x**3, color='r')
+
+ax.plot(x, x**4, color='b')
+
+ax.set_xlabel('x')
+
+ax.set_ylabel('y')
+
+ax.set_title('title')
+
+fig.show()
+
+
+# -> fig and axes - array of axes 01
+
+fig, ax = plt.subplots(nrows=1, ncols=2)
+
+fig.show()
+
+for axe in ax:
+	axe.set_xlabel('x')
+	axe.set_ylabel('y')
+	axe.set_title('title')
+	axe.plot(x, x ** 4, color='r')
+
+fig.show()
+
+
+# -> fig and axes - array of axes 02
+
+fig, ax = plt.subplots(nrows=1, ncols=2)
+
+ax[0].set_xlabel('x')
+ax[0].set_ylabel('y')
+ax[0].set_title('title')
+ax[0].plot(x, x ** 4, color='r')
+
+ax[1].set_xlabel('x')
+ax[1].set_ylabel('y')
+ax[1].set_title('title')
+ax[1].plot(x, x ** 4, color='r')
+
+fig.show()
+
+
+# -> tight layouts
+# to avoid overlap plots
+
+fig, ax = plt.subplots(nrows=5, ncols=5)
+
+plt.tight_layout()
+
+plt.show()
+
+
+# -> figsize
+
+fig = plt.figure(figsize=(8, 4), dpi=100)
+
+
+# -> figsize 02
+
+fig, axes = plt.subplots(figsize=(12, 3))
+
+axes.plot(x, y, color='r')
+
+axes.set_title('title')
+
+fig.show()
+
+
+# -> savefig
+
+fig.savefig('image1.png')
+fig.savefig('image2.jpg')
+
+
+# -> axes.legend
+
+fig, axes = plt.subplots(figsize=(8, 4))
+
+axes.plot(x, y, color='r', label='Data 01')
+
+axes.plot(y, x, color='g', label='Data 02')
+
+# 0 - matplotlib defines
+axes.legend(loc=0)
+
+# axes.legend(loc=1)
+# axes.legend(loc=2)
+# axes.legend(loc=3)
+# axes.legend(loc=4)
+# axes.legend(loc=5)
+
+fig.show()
