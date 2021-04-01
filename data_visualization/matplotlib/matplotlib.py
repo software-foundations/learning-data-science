@@ -8,9 +8,6 @@ from matplotlib import pyplot as plt
 from matplotlib.font_manager import FontProperties
 
 import numpy as np
-import pandas as pd
-
-from typing import List
 
 ######################
 # Matplotlib - part 01
@@ -226,5 +223,42 @@ axes.legend(loc=0)
 # axes.legend(loc=3)
 # axes.legend(loc=4)
 # axes.legend(loc=5)
+
+fig.show()
+
+
+######################
+# Matplotlib - part 03
+######################
+
+# -> linewidth, alpha and linestyle
+
+x = np.linspace(0, 5, 11)
+
+fig, ax = plt.subplots(figsize=(8, 10))
+
+ax.plot(x, x ** 2, 'b*-')
+
+ax.plot(x, x ** 3, 'ys-.')
+
+ax.plot(x, x ** 4, 'ro--')
+
+ax.plot(x, x ** 0.5, '#A4FC02')
+
+ax.plot(
+	x, 
+	x ** 6, 
+	'black', 
+	linewidth=10,
+	alpha=0.5,
+	linestyle='-.')
+
+"""
+linestyle
+
+supported values are '-', '--', '-.', ':', 
+'None', ' ', '', 'solid', 'dashed', 
+'dashdot', 'dotted'
+"""
 
 fig.show()
