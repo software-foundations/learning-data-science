@@ -35,3 +35,12 @@
 - This library gives total control of the figure aspects
 
 - This library was developed to be simular MatLab in plot methods
+
+# Seaborn
+
+- It is a library for statistical data visualization
+
+- Have stylish good patterns
+
+- Was projected to work with pandas dataframe objects
+
