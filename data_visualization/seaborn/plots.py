@@ -1,5 +1,7 @@
 import seaborn as sns
-from typing import Optional, List, Dict
+import matplotlib.pyplot as plt
+from typing import Optional, List, Dict, Union
+from abc import ABC, abstractmethod
 
 
 ####################
@@ -511,3 +513,85 @@ def lmplot(
 		aspect=aspect,
 		height=height,
 		**kwargs)
+
+
+###############
+# Pairgrid plot
+###############
+
+
+class IPairGrid(ABC):
+	def __init__(
+		self,
+		data,
+		plot_type: Union[plt.scatter, plt.hist, sns.kdeplot],
+		**kwargs):
+
+		self.pairgrid = sns.PairGrid(data, **kwargs)
+		self.plot_type = plot_type
+
+	@abstractmethod
+	def plot(self):
+		pass	
+		
+
+class PairGridMap(IPairGrid):
+	def __init__(self, data, plot_type=plt.scatter, **kwargs):
+		IPairGrid.__init__(self, data, plot_type, **kwargs)
+
+	def plot(self):
+		self.pairgrid.map(self.plot_type)
+
+
+class PairGridMapDiag(IPairGrid):
+	def __init__(self, data, plot_type=plt.hist, **kwargs):
+		IPairGrid.__init__(self, data, plot_type, **kwargs)
+
+	def plot(self):
+		return self.pairgrid.map_diag(self.plot_type)
+
+
+class PairGridMapUpper(IPairGrid):
+	def __init__(self, data, plot_type=plt.scatter, **kwargs):
+		IPairGrid.__init__(self, data, plot_type, **kwargs)
+
+	def plot(self):
+		return self.pairgrid.map_upper(self.plot_type)
+
+
+class PairGridMapLower(IPairGrid):
+	def __init__(self, data, plot_type=sns.kdeplot, **kwargs):
+		IPairGrid.__init__(self, data, plot_type, **kwargs)
+
+	def plot(self):
+		return self.pairgrid.map_lower(self.plot_type)
+
+
+###############
+# Facetgrid plot
+###############
+
+
+class IFacetGrid(ABC):
+	def __init__(
+		self,
+		data,
+		col: str,
+		row: str,
+		plot_type: Union[plt.scatter, plt.hist, sns.kdeplot],		
+		**kwargs):
+
+		self.facetgrid = sns.FacetGrid(data=data, col=col, row=row, **kwargs)
+		self.plot_type = plot_type
+
+	@abstractmethod
+	def plot(self):
+		pass
+
+
+class FacetGridMap(IFacetGrid):
+	def __init__(self, data, col, row, plot_type=plt.hist, **kwargs):
+		IFacetGrid.__init__(self, data, col, row, plot_type, **kwargs)
+
+	def plot(self, y: str):
+		return self.facetgrid.map(self.plot_type, y)

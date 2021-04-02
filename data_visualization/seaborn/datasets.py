@@ -9,3 +9,7 @@ def load_dataframe_flights():
 	"""load flights dataframe"""
 	return sns.load_dataset('flights')
 
+
+def load_dataframe_iris():
+	"""load iris dataframe"""
+	return sns.load_dataset('iris')
