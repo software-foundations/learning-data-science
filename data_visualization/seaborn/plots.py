@@ -141,6 +141,7 @@ def kdeplot(
 # Categorical plots
 ###################
 
+
 def barplot(
 	df, 
 	x: Optional[str] = None, 
@@ -365,6 +366,8 @@ def catplot(
 	y : column in df
 
 	kind : kind of plot. Egg: 'bar'
+
+	-> return : sns.catplot
 	"""
 
 	return sns.catplot(
@@ -372,4 +375,69 @@ def catplot(
 		x=x,
 		y=y,
 		kind=kind,
+		**kwargs)
+
+
+#################
+# Matricial Plots
+#################
+
+
+def heatmap(
+	data,
+	cmap: Optional[str] = None,
+	annot: Optional[str] = None,
+	linecolor: Optional[str] = None,
+	linewidths: Optional[float] = None,
+	**kwargs) -> sns.heatmap:
+	"""heatmap function
+
+	Arguments
+	---------
+
+	data : dataframe
+
+	cmap : color scheme
+
+	annot : number annotations
+
+	linecolor : color of the line. Egg: 'white', '#FFFFFF'
+
+	linewidths : width of the lines
+
+	kwargs : keyword arguments
+
+	-> return : sns.heatmap
+	"""
+
+	return sns.heatmap(
+		data=data,
+		cmap=cmap,
+		annot=annot,
+		linecolor=linecolor,
+		linewidths=linewidths,
+		**kwargs)
+
+
+def clustermap(
+	data,
+	standard_scale: Optional[float] = None,
+	**kwargs) -> sns.clustermap:
+	"""clustermap function
+
+	Arguments
+	---------
+	
+	data : pandas dataframe
+
+	standard_scale : scale of the colors of the clustermap
+
+	kwargs : keyword arguments
+
+	-> return : sns.clustermap
+
+	"""
+	return sns.clustermap(
+		data=data,
+		standard_scale=standard_scale,
 		**kwargs)
