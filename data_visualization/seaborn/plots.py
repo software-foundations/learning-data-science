@@ -1,9 +1,11 @@
 import seaborn as sns
-from typing import Optional, Any
+from typing import Optional, List, Dict
+
 
 ####################
 # Distribution plots
 ####################
+
 
 def distplot(
 	df, 
@@ -440,4 +442,72 @@ def clustermap(
 	return sns.clustermap(
 		data=data,
 		standard_scale=standard_scale,
+		**kwargs)
+
+
+##################
+# Regression plots
+##################
+
+
+def lmplot(
+	data,
+	x: str,
+	y: str,
+	hue: Optional[str] = None,
+	palette: Optional[str] = None,	
+	markers: Optional[List[str]] = "o",
+	scatter_kws: Optional[Dict] = None,
+	col: Optional[str] = None,
+	row: Optional[str] = None,
+	aspect: Optional[float] = 1,
+	height: Optional[float] = None,
+	**kwargs) -> sns.lmplot:
+	"""linear model plot function
+
+	Arguments
+	---------
+
+	data : pandas dataframe
+
+	x : column in pandas df
+
+	y : column in pandas df
+
+	hue : column in df
+
+	palette : color scheme
+
+	markers : point markers. Egg: ['o'], ['o', 'v']
+
+	scatter_kws : keyword scatter arguments. Egg: {'s':100}
+
+	col : column in df
+	Used to segregate/split in columns the plot by selected column items
+	Utils when used with hue. Egg: hue='sex', col='sex'
+
+	row : column in df
+	Used to segregate/split in rows the plot by selected column items
+	Utisl when used with hue
+
+	aspect : alter plot horizontal layout
+
+	height : alter plot vertical layout
+
+	kwargs : keyword arguments
+
+	-> return : sns.lmplot
+	"""
+	return sns.lmplot(
+		data=data,
+		x=x,
+		y=y,
+		hue=hue,
+		palette=palette,
+		markers=markers,
+		scatter_kws=scatter_kws,
+		col=col,
+		row=row,
+		aspect=aspect,
+		height=height,
 		**kwargs)
