@@ -59,7 +59,7 @@ def jointplot(
 	-> return : sns.jointplot
 	"""
 
-	return sns.jointplot(x=x, y=y, data=df, *args, **kwargs)
+	return sns.jointplot(x=x, y=y, data=df, *args, **kwargs)	
 	
 
 def pairplot(

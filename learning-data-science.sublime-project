@@ -75,6 +75,10 @@
 	[
 		{
 			"path": "."
+		},
+
+		{
+			"path": "../clone-datasets/"
 		}
 	],
 	"python_interpreter": "/home/bruno/Documents/dev/learning-data-science/venv-learning-data-science/bin/python"

@@ -7,8 +7,7 @@ import matplotlib.pyplot as plt
 
 df = load_dataframe_tips()
 
-# distplots
-
+# distplots	
 distplot(df, 'total_bill')
 distplot(df, 'total_bill', kde=True)
 distplot(df, 'total_bill', kde=False)
