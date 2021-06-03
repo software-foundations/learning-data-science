@@ -222,7 +222,7 @@ df1 = pd.DataFrame(data={
     'B': ['B0', 'B1', 'B2', 'B3'],
     'C': ['C0', 'C1', 'C2', 'C3'],
     'D': ['D0', 'D1', 'D2', 'D3']},
-    index=[0, 1, 2, 3])
+    index=[0, 1, 2, 3]) 
 
 df2 = pd.DataFrame(data={
     'A': ['A4', 'A5', 'A6', 'A7'],
